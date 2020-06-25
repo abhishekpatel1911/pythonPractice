@@ -6,45 +6,42 @@
 # ask for user input and create methods for the program
 
 
-def addition(input1, input2):
+def addition(input1, input2):  # Add Method
     print("You chose to add the numbers: " + input1 + " & " + input2 + "\n")
     sumTotal = int(input1) + int(input2)
-    message = input1 + " + " + input2 + " = " + str(sumTotal)
-    return message
+    return print(input1 + " + " + input2 + " = " + str(sumTotal))
 
 
-def subtraction(input1, input2):
+def subtraction(input1, input2):  # Subtract Method
     print("You chose to subtract the numbers" + input1 + " & " + input2 + "\n")
     diffTotal = int(input1) - int(input2)
-    message = input1 + " - " + input2 + " = " + str(diffTotal)
-    return message
+    return print(input1 + " - " + input2 + " = " + str(diffTotal))
 
 
-def multiplication(input1, input2):
+
+def multiplication(input1, input2):  # Multiply Method
     print("You chose to multiply the numbers" + input1 + " & " + input2 + "\n")
     multiplicationTotal = int(input1) * int(input2)
-    message = input1 + " * " + input2 + " = " + str(multiplicationTotal)
-    return message
+    return print(input1 + " * " + input2 + " = " + str(multiplicationTotal))
 
 
-def division(input1, input2):
+def division(input1, input2):  # Divide Method
     print("You chose to divide the numbers" + input1 + " & " + input2 + "\n")
     quotientTotal = int(input1) / int(input2)
-    message = input1 + " / " + input2 + " = " + str(quotientTotal)
-    return message
+    return print(input1 + " / " + input2 + " = " + str(quotientTotal))
 
 
-def user_input_one():
+def user_input_one():  # Takes the users first input
     user_choice_of_number = input("Enter in a number\n")
     return user_choice_of_number
 
 
-def user_input_two():
+def user_input_two():  # Takes the users second input
     user_choice_of_number = input("Enter in another number\n")
     return user_choice_of_number
 
 
-def choice_to_continue():
+def choice_to_continue():  # This method is called when the user is asked if they want to try a diff operation
     continued = True
     user_choice_to_continue = input("Would you like to perform another operation? Y/N \n")
     if user_choice_to_continue == "Y" or user_choice_to_continue == "y":
@@ -58,13 +55,13 @@ def choice_to_continue():
     return continued
 
 
-def menu_choice():
+def menu_choice():  # This is the Menu that allows users to choose which operation they want to perform
     print("What operation would you like to perform:")
     menuChoice = input('1. Addition, 2. Subtraction, 3.Multiplication, 4. Division \n')
     return menuChoice
 
 
-def perform_operations():
+def perform_operations():  # Function to perform math operations based on choice made in the above function
     continued = True
     while continued:
         userInput1 = user_input_one()
@@ -87,11 +84,11 @@ def perform_operations():
             perform_operations()
 
 
-def menu():
+def main():  # The driver of the code.
     print("********** Welcome to Basic Mathematics **********")
     print("Please enter in 2 numbers you would like to perform basic math operations with")
     perform_operations()
 
 
 if __name__ == '__main__':
-    menu()
+    main()
