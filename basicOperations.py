@@ -9,6 +9,7 @@
 
 
 def addition(input1, input2):  # Add Method
+    print("You chose to add the numbers: " + input1 + " & " + input2 + "\n")
     sumTotal = int(input1) + int(input2)
     return print(input1 + " + " + input2 + " = " + str(sumTotal))
 
