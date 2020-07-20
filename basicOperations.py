@@ -5,9 +5,10 @@
 # Advanced Features:
 # ask for user input and create methods for the program
 
+# @Author: Abhishek Patel
+
 
 def addition(input1, input2):  # Add Method
-    print("You chose to add the numbers: " + input1 + " & " + input2 + "\n")
     sumTotal = int(input1) + int(input2)
     return print(input1 + " + " + input2 + " = " + str(sumTotal))
 
@@ -16,7 +17,6 @@ def subtraction(input1, input2):  # Subtract Method
     print("You chose to subtract the numbers" + input1 + " & " + input2 + "\n")
     diffTotal = int(input1) - int(input2)
     return print(input1 + " - " + input2 + " = " + str(diffTotal))
-
 
 
 def multiplication(input1, input2):  # Multiply Method
@@ -51,37 +51,44 @@ def choice_to_continue():  # This method is called when the user is asked if the
         print("Good bye")
     else:
         print("Please enter in a valid response!!")
-        choice_to_continue()
+        return choice_to_continue()  # Recursion
     return continued
 
 
 def menu_choice():  # This is the Menu that allows users to choose which operation they want to perform
     print("What operation would you like to perform:")
     menuChoice = input('1. Addition, 2. Subtraction, 3.Multiplication, 4. Division \n')
-    return menuChoice
+    if menuChoice == '1':
+        return int(menuChoice)
+    elif menuChoice == '2':
+        return int(menuChoice)
+    elif menuChoice == '3':
+        return int(menuChoice)
+    elif menuChoice == '4':
+        return int(menuChoice)
+    else:
+        print("Please enter a valid choice")
+        return menu_choice()
 
 
 def perform_operations():  # Function to perform math operations based on choice made in the above function
+    userInput1 = user_input_one()
+    userInput2 = user_input_two()
     continued = True
     while continued:
-        userInput1 = user_input_one()
-        userInput2 = user_input_two()
-        menuChoice = menu_choice()
-        if int(menuChoice) == 1:
+        menuChoice = int(menu_choice())
+        if menuChoice == 1:
             addition(userInput1, userInput2)
             continued = choice_to_continue()
-        elif int(menuChoice) == 2:
+        elif menuChoice == 2:
             subtraction(userInput1, userInput2)
             continued = choice_to_continue()
-        elif int(menuChoice) == 3:
+        elif menuChoice == 3:
             multiplication(userInput1, userInput2)
             continued = choice_to_continue()
-        elif int(menuChoice) == 4:
+        elif menuChoice == 4:
             division(userInput1, userInput2)
             continued = choice_to_continue()
-        else:
-            print("Please enter in a valid choice")
-            perform_operations()
 
 
 def main():  # The driver of the code.

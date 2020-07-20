@@ -17,13 +17,37 @@ def game_menu():
     print("Choose your game type:")
     game_type = input("1. PvP, 2. vs AI")
     if game_type == str(1):  # code a PvP function to handle this
-        print("PvP Coming Soon!!!")
+        continued = True
+        player1_win_count = 0
+        player2_win_count = 0
+        while continued:
+            score_board = pvp_scoreboard(player1_win_count, player2_win_count)
+            print("Player1 choose your weapon: ")
+            player1_choice = player_choice()
+            print("Player2 choose your weapon: ")
+            player2_choice = player_choice()
+            outcome = vs_player(player1_choice, player2_choice)
+            if outcome == "Player2":
+                player2_win_count += 1
+                continued = choice_to_continue()
+            elif outcome == "Player":
+                player1_win_count += 1
+                continued = choice_to_continue()
+            else:
+                player2_win_count
+                player1_win_count
+                continued = choice_to_continue()
+            if not continued:
+                print("**********Final Score**********")
+                print(score_board)
+                print("*******************************")
+                print("Good Game!! BYE!!")
     elif game_type == str(2):  # code a vs AI function to handle this
         continued = True
         player_win_count = 0
         ai_win_count = 0
         while continued:
-            score_board = scoreboard(player_win_count, ai_win_count)
+            score_board = vs_ai_scoreboard(player_win_count, ai_win_count)
             print("Player choose your weapon: ")
             user_choice = player_choice()
             print("Computer choose your weapon: ")
@@ -31,19 +55,20 @@ def game_menu():
             outcome = vs_ai(user_choice, computer_choice)
             if outcome == "Computer":
                 ai_win_count += 1
+                continued = choice_to_continue()
             elif outcome == "Player":
                 player_win_count += 1
+                continued = choice_to_continue()
             else:
                 ai_win_count
                 player_win_count
-            continued = choice_to_continue()
+                continued = choice_to_continue()
             if not continued:
                 print("Final Score: " + score_board)
                 print("Good Game!! BYE!!")
-
-    else:
+    else:   # give a recursion call to the current method for an invalid input.
         print('Please enter in a valid choice')
-        game_menu()
+        return game_menu()
 
 
 def game_rules():
@@ -92,7 +117,20 @@ def vs_ai(user_weapon_choice, computer_weapon_choice):
     return winner
 
 
-def choice_to_continue():  # This method is called when the user is asked if they want to try a diff operation
+def vs_player(player1_weapon_choice, player2_weapon_choice):
+    if player1_weapon_choice == 1 and player2_weapon_choice == 2 or player1_weapon_choice == 2 and player2_weapon_choice == 3 or player1_weapon_choice == 3 and player2_weapon_choice == 1:
+        print("Player2  Wins!!!!")
+        winner = "Player2"
+    elif player1_weapon_choice == 2 and player2_weapon_choice == 1 or player1_weapon_choice == 3 and player2_weapon_choice == 2 or player1_weapon_choice == 1 and player2_weapon_choice == 3:
+        print("Player1  Wins!!")
+        winner = "Player"
+    else:
+        print("It's a TIE!!!")
+        winner = "Tie"
+    return winner
+
+
+def choice_to_continue():  # This method is called when the user is asked if they want to continue playing the game.
     continued = True
     user_choice_to_continue = input("Would you like to play again? Y/N \n")
     if user_choice_to_continue == "Y" or user_choice_to_continue == "y":
@@ -101,13 +139,21 @@ def choice_to_continue():  # This method is called when the user is asked if the
         continued = False
     else:
         print("Please enter in a valid response!!")
-        choice_to_continue()
+        return choice_to_continue()
     return continued
 
 
-def scoreboard(player_win_count, computer_win_count):
+def vs_ai_scoreboard(player_win_count, computer_win_count):
     print("******************** SCORE BOARD ********************")
-    score_board = "Computer: " + str(computer_win_count) + " Player: " + str(player_win_count)
+    score_board = "Computer: " + str(computer_win_count) + "       Player: " + str(player_win_count)
+    print(score_board)
+    print("*****************************************************")
+    return score_board
+
+
+def pvp_scoreboard(player1_win_count, player2_win_count):
+    print("******************** SCORE BOARD ********************")
+    score_board = "Player1: " + str(player1_win_count) + "         Player2: " + str(player2_win_count)
     print(score_board)
     print("*****************************************************")
     return score_board
