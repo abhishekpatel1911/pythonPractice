@@ -4,6 +4,7 @@
 
 # Advanced Features:
 # ask for user input and create methods for the program
+# ask the user if they want to perform another operation with the same numbers or different numbers
 
 # @Author: Abhishek Patel
 
@@ -46,14 +47,35 @@ def choice_to_continue():  # This method is called when the user is asked if the
     continued = True
     user_choice_to_continue = input("Would you like to perform another operation? Y/N \n")
     if user_choice_to_continue == "Y" or user_choice_to_continue == "y":
-        continued
+        user_choice = new_numbers()
+        if user_choice == "2":
+            continued
+        elif user_choice is None:
+            continued = False
     elif user_choice_to_continue == "N" or user_choice_to_continue == "n":
         continued = False
         print("Good bye")
     else:
         print("Please enter in a valid response!!")
         return choice_to_continue()  # Recursion
+        continued = False
+
     return continued
+
+
+def new_numbers():
+    decision = True
+    while decision:
+        print("Do you want to perform another operation with the same numbers or different numbers")
+        new_set_of_numbers = input("1. New Numbers, 2. Same Numbers")
+        if new_set_of_numbers == "1":
+            perform_operations()
+            break
+        elif new_set_of_numbers == "2":
+            return new_set_of_numbers
+        else:
+            print("Please enter a valid choice")
+            return new_numbers()
 
 
 def menu_choice():  # This is the Menu that allows users to choose which operation they want to perform
