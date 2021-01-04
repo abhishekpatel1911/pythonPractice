@@ -1,4 +1,4 @@
-# Rock Paper Scissors
+# Classic Game #1: Rock Paper Scissors
 # Basic Features:
 # Play a game of Rock Paper Scissors
 # Keep Track of Win-Loss Record
