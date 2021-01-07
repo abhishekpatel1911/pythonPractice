@@ -17,4 +17,4 @@ Project 3: Guess the Number Game
 Summary: Play a guess the number game with the Computer, where the computer randomly generates a number, 
 and the user has 3 tries to guess the number.
 
-Concepts Practiced: Random Function, Recursion, For/While Loops. 
+Concepts Practiced: Random Function, Recursion, For/While Loops, isdidigt Function, and lstrip Function.
